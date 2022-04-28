@@ -14,3 +14,14 @@
   * Agregação;
   * Visualização;
   * Storytelling.
+
+## Links
+
+Links uteis para a consulta durante o projeto:
+
+* [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+* [Pandas](https://pandas.pydata.org/pandas-docs/stable/pandas.pdf)
+* [Seaborn](https://seaborn.pydata.org/#)
+* [Selenium](https://selenium-python.readthedocs.io/)
+
+* [Listagens de Estoque de Solo Criado](http://www2.portoalegre.rs.gov.br/edificapoa/default.php?p_secao=1445)
