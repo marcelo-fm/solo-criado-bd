@@ -23,5 +23,6 @@ Links uteis para a consulta durante o projeto:
 * [Pandas](https://pandas.pydata.org/pandas-docs/stable/pandas.pdf)
 * [Seaborn](https://seaborn.pydata.org/#)
 * [Selenium](https://selenium-python.readthedocs.io/)
+* [Scrapy](https://docs.scrapy.org/en/latest/)
 
 * [Listagens de Estoque de Solo Criado](http://www2.portoalegre.rs.gov.br/edificapoa/default.php?p_secao=1445)
