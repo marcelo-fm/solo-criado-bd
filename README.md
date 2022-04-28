@@ -10,7 +10,7 @@
 * Carregar cvs de listagem para o banco de dados
   * Extração;
   * Exploração;
-    * Limpeza;
-    * Agregação;
-    * Visualização;
-    * Storytelling.
+  * Limpeza;
+  * Agregação;
+  * Visualização;
+  * Storytelling.
