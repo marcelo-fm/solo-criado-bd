@@ -29,6 +29,6 @@ Links uteis para a consulta durante o projeto:
 * [Listagens de Estoque de Solo Criado](http://www2.portoalegre.rs.gov.br/edificapoa/default.php?p_secao=1445)
 * [ilovepdf](https://www.ilovepdf.com/pt)
 
-## Primeiros passos:
+## Primeiros passos
 
 Na primeira versão do programa vou considerar que eu já baixei os pdfs do site da prefeitura e converti eles para excel usando a ferramenta do ilovepdf. Posteriormente vou tentar automatizar o processo de modo que o programa baixe automaticamente o pdf e o converta via web. Portanto, primeiramente vou focar na limpeza e agregação dos dados.
