@@ -19,6 +19,19 @@ def join_sheet(file):
 
     return listagem
 
+def mzueuqrt(dataframe: list):
+    """Receives a dataframe, adds
+    the MZUEUQRT column in the [-1]
+    position, and makes it the index."""
+
+    new_columns = list(dataframe.columns)
+    new_columns.insert(-1, 'MZUEUQRT')
+    dataframe = dataframe.reindex(columns=new_columns)
+    #Agora vem o calculo da columa MZUEUQRT
+    
+    dataframe['MZUEUQRT'] = (dataframe['MZ']*1000000) + (dataframe['UEU']*1000) + (dataframe['QRT'])
+
+    return dataframe
 
 def db_manager(path=any, database=[]):
     """Receives a path to Excel files and 
@@ -38,7 +51,9 @@ def db_manager(path=any, database=[]):
     elif len(database) < len(files): #Existem novas listagens que não foram adicionadas ao BD
         print("O banco de dados está desatualizado")
         for i in range(len(database), len(files)):
-            database.append(join_sheet(path + "/" + files[i]))
+            listagem = mzueuqrt(join_sheet(path + "/" + files[i]))
+            listagem = listagem.set_index('MZUEUQRT', drop=False)
+            database.append(listagem)
             print("Adicionando listagem", (i+1))
 
     return database
