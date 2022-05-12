@@ -25,6 +25,7 @@ Links uteis para a consulta durante o projeto:
 * [Selenium](https://selenium-python.readthedocs.io/)
 * [Scrapy](https://docs.scrapy.org/en/latest/)
 * [Requests](https://docs.python-requests.org/en/latest/)
+* [pyQGIS](https://docs.qgis.org/3.22/pt_BR/docs/pyqgis_developer_cookbook/index.html)
 
 * [Listagens de Estoque de Solo Criado](http://www2.portoalegre.rs.gov.br/edificapoa/default.php?p_secao=1445)
 * [ilovepdf](https://www.ilovepdf.com/pt)
