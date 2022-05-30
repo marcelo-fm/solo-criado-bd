@@ -46,12 +46,13 @@ def calcula_uso(dataframe, is_percent=False): #arrumar
         prct = ''
 
     uso_estoque = dataframe.copy()
+    dataframe = retira_ae(dataframe)
     uso_estoque = retira_ae(uso_estoque)
 
     colunas = list(uso_estoque.columns)
 
     for i in range(4, len(colunas)):
-        uso_estoque[colunas[i]] = (dataframe[colunas[3]] - dataframe[colunas[i]]) * percent
+        uso_estoque[colunas[i]] = (dataframe[colunas[3]] - dataframe[colunas[i]])
     
     # muda o nome
     for i in range(3, len(colunas)):
