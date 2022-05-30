@@ -34,6 +34,18 @@ def retorna_ae(dataframe):
     
     return dataframe
 
+def corrige_mz1(estoque_maximo, uso_estoque):
+    uso_mz1 = uso_estoque.loc[uso_estoque['MZ'] == 1].copy()
+
+    col_max = list(estoque_maximo.columns)
+    col_uso = list(uso_estoque.columns)
+
+    for i in range(14, len(col_uso)):
+        uso_mz1[col_uso[i]] = (estoque_maximo[col_max[14]] - estoque_maximo[col_max[i]]) + uso_mz1[col_uso[i-1]]
+        uso_estoque.replace(to_replace=list(uso_estoque[col_uso[i]][:1274]), value=list(uso_mz1[col_uso[i]]), inplace=True)
+    
+    return uso_estoque
+
 def calcula_uso(dataframe, is_percent=False): #arrumar
     """Receives a database containing 
     all dataframes, aggregates them, and
@@ -61,5 +73,7 @@ def calcula_uso(dataframe, is_percent=False): #arrumar
         else:
             colunas[i] = 'uso_estq' + prct + '_' + str(i-2)
     uso_estoque.columns = colunas
+
+    uso_estoque = corrige_mz1(dataframe, uso_estoque)
 
     return uso_estoque
