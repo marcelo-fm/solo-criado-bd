@@ -33,3 +33,32 @@ def retorna_ae(dataframe):
         dataframe.drop(labels=area_especial, axis=0, inplace=True)
     
     return dataframe
+
+def calcula_uso(dataframe, is_percent=False): #arrumar
+    """Receives a database containing 
+    all dataframes, aggregates them, and
+    calculate the use of Solo Criado."""
+    if is_percent:
+        percent = (100 / dataframe[3])
+        prct = '%'
+    else:
+        percent = 1
+        prct = ''
+
+    uso_estoque = dataframe.copy()
+    uso_estoque = retira_ae(uso_estoque)
+
+    colunas = list(uso_estoque.columns)
+
+    for i in range(4, len(colunas)):
+        uso_estoque[colunas[i]] = (dataframe[colunas[3]] - dataframe[colunas[i]]) * percent
+    
+    # muda o nome
+    for i in range(3, len(colunas)):
+        if i < 12:
+            colunas[i] = 'uso_estq' + prct + '_0' + str(i-2)
+        else:
+            colunas[i] = 'uso_estq' + prct + '_' + str(i-2)
+    uso_estoque.columns = colunas
+
+    return uso_estoque
