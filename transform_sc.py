@@ -46,15 +46,19 @@ def corrige_mz1(estoque_maximo, uso_estoque):
     
     return uso_estoque
 
+def calcula_porcentagem(dataframe):
+    coluna = list(dataframe.columns)
+    uso_porcentagem = (dataframe[coluna[3:]]*100) / dataframe[coluna[3]]
+    data_merged = pd.merge(left=dataframe[coluna[:3]], right=uso_porcentagem, how='outer', left_index=True, right_index=True)
+    return data_merged
+
 def calcula_uso(dataframe, is_percent=False): #arrumar
     """Receives a database containing 
     all dataframes, aggregates them, and
     calculate the use of Solo Criado."""
     if is_percent:
-        percent = (100 / dataframe[3])
         prct = '%'
     else:
-        percent = 1
         prct = ''
 
     uso_estoque = dataframe.copy()
@@ -75,5 +79,10 @@ def calcula_uso(dataframe, is_percent=False): #arrumar
     uso_estoque.columns = colunas
 
     uso_estoque = corrige_mz1(dataframe, uso_estoque)
+
+    if is_percent:
+        uso_estoque = calcula_porcentagem(uso_estoque)
+    else:
+        None
 
     return uso_estoque
