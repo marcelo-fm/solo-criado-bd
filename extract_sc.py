@@ -34,7 +34,7 @@ def mzueuqrt(dataframe: list):
 
     return dataframe
 
-def db_manager(path=any, database=[]):
+def db_manager(path="./dados/ListagemSoloCriado/XLSX", database=[]):
     """Receives a path to Excel files and 
     a list containing dataframes, checks if 
     there is any file that is not in the database, 
