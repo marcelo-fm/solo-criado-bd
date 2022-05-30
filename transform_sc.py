@@ -66,7 +66,7 @@ def calcula_uso(dataframe, is_percent=False): #arrumar
     uso_estoque = retira_ae(uso_estoque)
 
     colunas = list(uso_estoque.columns)
-
+    # calcula o uso de estoque maximo.
     for i in range(4, len(colunas)):
         uso_estoque[colunas[i]] = (dataframe[colunas[3]] - dataframe[colunas[i]])
     
@@ -77,8 +77,8 @@ def calcula_uso(dataframe, is_percent=False): #arrumar
         else:
             colunas[i] = 'uso_estq' + prct + '_' + str(i-2)
     uso_estoque.columns = colunas
-
-    uso_estoque = corrige_mz1(dataframe, uso_estoque)
+    # parece que a função corrige_mz1 não funciona dentro desta função, por isso comentei fora. Mas ainda quero descobrir o porquê
+    # uso_estoque = corrige_mz1(dataframe, uso_estoque)
 
     if is_percent:
         uso_estoque = calcula_porcentagem(uso_estoque)
@@ -86,3 +86,9 @@ def calcula_uso(dataframe, is_percent=False): #arrumar
         None
 
     return uso_estoque
+
+def cria_uso_estoque(estoque_maximo, uso_estoque, is_percent=False):
+    uso_estq = calcula_uso(estoque_maximo)
+    uso_estq = corrige_mz1(estoque_maximo, uso_estoque)
+
+    return uso_estq
