@@ -88,7 +88,7 @@ def calcula_uso(dataframe, is_percent=False): #arrumar
     return uso_estoque
 
 def cria_uso_estoque(estoque_maximo, is_percent=False):
-    uso_estq = calcula_uso(estoque_maximo)
+    uso_estq = calcula_uso(estoque_maximo, is_percent)
     uso_estq = corrige_mz1(estoque_maximo, uso_estq)
 
     return uso_estq
