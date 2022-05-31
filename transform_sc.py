@@ -10,9 +10,9 @@ def estoque_maximo(database):
 
     for i in range(1, len(database)):
         if i < 9: #Somente para não ter erro com a coluna da direita        \/
-            estq_max = pd.merge(left=estq_max, right=database[i][('estq_max_0'+str(i+1))], how='outer', on='MZUEUQRT')
+            estq_max = pd.merge(left=estq_max, right=database[i][('estq_max_0'+str(i+1))], how='inner', on='MZUEUQRT')
         else:
-            estq_max = pd.merge(left=estq_max, right=database[i][('estq_max_'+str(i+1))], how='outer', on='MZUEUQRT')
+            estq_max = pd.merge(left=estq_max, right=database[i][('estq_max_'+str(i+1))], how='inner', on='MZUEUQRT')
     
     return estq_max
 
@@ -26,13 +26,15 @@ def retira_ae(dataframe):
     return dataframe
 
 def retorna_ae(dataframe):
-    colunas = list(dataframe.columns)
+    dataframe01 = dataframe.copy()
+    colunas = list(dataframe01.columns)
+    
 
     for i in range(3, len(colunas)):
-        area_especial = list(dataframe.index[dataframe[colunas[i]] != 'AE'])
-        dataframe.drop(labels=area_especial, axis=0, inplace=True)
+        area_especial = list(dataframe01.index[dataframe01[colunas[i]] != 'AE'])
+        dataframe01.drop(labels=area_especial, axis=0, inplace=True)
     
-    return dataframe
+    return dataframe01
 
 def corrige_mz1(estoque_maximo, uso_estoque):
     uso_mz1 = uso_estoque.loc[uso_estoque['MZ'] == 1].copy()
