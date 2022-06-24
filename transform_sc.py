@@ -29,7 +29,6 @@ def retorna_ae(dataframe):
     dataframe01 = dataframe.copy()
     colunas = list(dataframe01.columns)
     
-
     for i in range(3, len(colunas)):
         area_especial = list(dataframe01.index[dataframe01[colunas[i]] != 'AE'])
         dataframe01.drop(labels=area_especial, axis=0, inplace=True)
